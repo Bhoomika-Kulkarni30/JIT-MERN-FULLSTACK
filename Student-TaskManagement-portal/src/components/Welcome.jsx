@@ -1,12 +1,10 @@
 export function Welcome(){
     return (
-        <h1>
-            <center>
-
-            Welcome to Student Task Management Portal
-
-            </center>
-        </h1>
+        <section className="welcome">
+            <h1>
+                Welcome back, Students!
+            </h1>
+        </section>
     );
 }
 
