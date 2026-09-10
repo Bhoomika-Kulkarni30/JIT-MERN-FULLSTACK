@@ -11,7 +11,8 @@ nav{
 
 nav h2{
   color:#1e3a8a;
-  font-size:20px;
+  font-size:40px;
+  margin-right: 16em;
 }
 
 body{
@@ -99,4 +100,27 @@ main > h2{
 main{
   padding:12px 30px 30px;
   color:#1e293b;
+}
+
+/*button*/
+button{
+  background-color:rgb(151, 231, 255);
+  color:black;
+  padding:10px;
+  margin: 10px;
+  border-color: white;
+  border-left-color: rgb(8, 12, 252);
+  border-right-color:  rgb(8, 12, 252);
+  border-bottom-color: white;
+  border-radius: 30px;
+  box-shadow: 2px 1px 10px rgb(138, 138, 236);
+}
+
+button:hover{
+  background-color:#eff6ff;
+}
+
+nav img {
+  margin-left:20px;
+
 }
