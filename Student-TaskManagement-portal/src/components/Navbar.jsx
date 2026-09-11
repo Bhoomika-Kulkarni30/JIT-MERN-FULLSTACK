@@ -1,5 +1,5 @@
 import studentlogo from '../assets/student-portal.png'
-
+import { Link } from "react-router-dom"
 export default function Navbar(){
     return (
     <nav>
@@ -7,11 +7,11 @@ export default function Navbar(){
      <h2>Student Task Portal</h2>
      <div className="nav-links">
     <button>
-        <a href="#"><span>Dashboard</span></a>
+        <Link to={"/"}><span>Home</span></Link>
     </button>
 
     <button>
-        <a href="#"><span>Tasks</span></a>
+        <Link to={"/tasks"}><span>Tasks</span></Link>
     </button>
      </div>
     </nav>

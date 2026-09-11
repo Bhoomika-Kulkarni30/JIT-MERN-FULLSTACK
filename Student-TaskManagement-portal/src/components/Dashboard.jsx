@@ -3,31 +3,12 @@ import Taskcard from "./Tasklcard";
 import AddTask from "./AddTask";
 import { useState } from "react";
 
-function Dashboard(){
-    const [tasks,setTasks]=useState([
-        { 
-            id:1,
-            title:"Learn React",
-          description:"Understanding components",
-          status:"Status: in progress"
-        },
-          {
-            id:2,
-             title:"HTMLCSS",
-         description:"building Responsive Webpage", 
-         status:"Status: completed"
-        },
-        {
-            id:3,
-             title:"Node & Express", 
-         description:"Building REST API's",
-         status:"Status: pending"
-        }
-    ]);
+function Dashboard(props){
+   
 
     function toggletask(id){
-     setTasks(
-        tasks.map((task) => {
+     props.setTasks(
+    props.tasks.map((task) => {
             if(task.id === id){
                 return {...task,
                     status: task.status === "status:completed" ? "status:pending" : "status:completed"
@@ -40,8 +21,16 @@ function Dashboard(){
     }
 
     function addTask(newTask){
-     setTasks([...tasks,newTask]);
+     props.setTasks([...tasks,newTask]);
     }
+
+ function deleteTask(id) {
+    props.setTasks(
+        tasks.filter((task) => {return task.id !==id})
+    );
+    }
+
+
     return(
     <main>
         <div className="stat-container">
@@ -55,9 +44,15 @@ function Dashboard(){
 
         <h2 className="tasks-container">Recent Tasks</h2>
         <div className="tasks-container">
-            {tasks.map((task) =>(
-                <Taskcard key={task.id} title={task.title} description={task.description} status={task.status} 
-                onToggle={() => toggletask(task.id)}/>
+            {props.tasks.map((task) =>(
+                <Taskcard key={task.id} 
+                id={task.id}
+                title={task.title} 
+                description={task.description} 
+                status={task.status} 
+                onToggle={() => toggletask(task.id)}
+                onDelete={() => deleteTask(task.id)}
+                />
             ))}; 
         </div>
     </main>     

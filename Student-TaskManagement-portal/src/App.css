@@ -117,10 +117,40 @@ button{
 }
 
 button:hover{
-  background-color:#eff6ff;
+  background-color:#ffeff4;
 }
 
 nav img {
   margin-left:20px;
+
+}
+
+input{
+  border-radius: 7px;
+  text-decoration-color: black;
+  border: 1px solid #1e3a8a;
+}
+label{
+  font-size: 18px;
+  color:black;
+}
+
+input:hover{
+  box-shadow: 1px 2px 9px rgb(45, 122, 236);
+}
+
+.divaddtask{
+  color:#1e3a8a
+}
+
+.delete-icon{
+ height: 28px;
+ width: 28px;
+ margin-right: 20px;
+}
+
+.delete-icon:hover{
+height:30px;
+width:30px;
 
 }

@@ -1,3 +1,5 @@
+import deleteicon from '../assets/dustbin.png'
+import {Link} from "react-router-dom"
 function Taskcard(props){
     return (
     <div className="task-card">
@@ -7,7 +9,18 @@ function Taskcard(props){
         
         <p><i>{props.status}</i></p>
         <button onClick={props.onToggle}>change status</button>
-    </div>
+     <Link to={`/tasks/${props.id}`}>
+     View Details 
+     </Link>
+<img 
+    className="delete-icon"
+    src={deleteicon}
+    alt="Delete-image"
+    title="Delete task"
+    onClick={props.onDelete}
+/>    
+
+</div>
     );
 }
 export default Taskcard;
