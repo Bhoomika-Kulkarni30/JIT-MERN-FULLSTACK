@@ -5,31 +5,20 @@ import { Routes,Route } from "react-router-dom";
 import Tasks from './components/Tasks';
 
 import Taskdetails from './components/Taskdetails';
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 import './App.css'
 function App(){
      
-   const [tasks,setTasks]=useState([
-        { 
-            id:1,
-            title:"Learn React",
-          description:"Understanding components",
-          status:"Status: in progress"
-        },
-          {
-            id:2,
-             title:"HTMLCSS",
-         description:"building Responsive Webpage", 
-         status:"Status: completed"
-        },
-        {
-            id:3,
-             title:"Node & Express", 
-         description:"Building REST API's",
-         status:"Status: pending"
-        }
-    ]);
+   const [tasks,setTasks]=useState([]);
+    
+  useEffect(()=>{
+    fetch("http://localhost:5000/api/tasks")
+    .then((response) => response.json())
+    .then((data) =>{
+      setTasks(data);
+    });
+  },[])
 
   return(
     <div>
