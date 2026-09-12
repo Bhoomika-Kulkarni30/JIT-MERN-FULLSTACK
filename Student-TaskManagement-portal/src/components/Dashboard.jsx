@@ -1,17 +1,16 @@
 import Statcard from "./Statcard";
 import Taskcard from "./Tasklcard";
 import AddTask from "./AddTask";
-import { useState } from "react";
 
 function Dashboard(props){
-   
-
+ 
+    
     function toggletask(id){
      props.setTasks(
     props.tasks.map((task) => {
             if(task.id === id){
                 return {...task,
-                    status: task.status === "status:completed" ? "status:pending" : "status:completed"
+                    status: task.status === "Completed" ? "Pending" : "Completed"
                 };
                 
             }
@@ -21,17 +20,17 @@ function Dashboard(props){
     }
 
     function addTask(newTask){
-     props.setTasks([...tasks,newTask]);
+     props.setTasks([...props.tasks,newTask]);
     }
 
  function deleteTask(id) {
-    props.setTasks(
-        tasks.filter((task) => {return task.id !==id})
-    );
+        props.setTasks(
+            props.tasks.filter((task)=>task.id !==id)
+        );
     }
 
 
-    return(
+    return (
     <main>
         <div className="stat-container">
          <Statcard title="Total tasks" value="10"/>
@@ -44,8 +43,10 @@ function Dashboard(props){
 
         <h2 className="tasks-container">Recent Tasks</h2>
         <div className="tasks-container">
-            {props.tasks.map((task) =>(
-                <Taskcard key={task.id} 
+            {props.tasks.map((task)=>(
+     
+                <Taskcard 
+                key={task.id} 
                 id={task.id}
                 title={task.title} 
                 description={task.description} 
@@ -53,7 +54,7 @@ function Dashboard(props){
                 onToggle={() => toggletask(task.id)}
                 onDelete={() => deleteTask(task.id)}
                 />
-            ))}; 
+            ))}
         </div>
     </main>     
     );

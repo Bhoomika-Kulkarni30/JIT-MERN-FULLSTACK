@@ -130,7 +130,11 @@ input{
   text-decoration-color: black;
   border: 1px solid #1e3a8a;
 }
-label{
+form{
+  border: 1px;
+  border:#dbeafe;
+}
+form label{
   font-size: 18px;
   color:black;
 }

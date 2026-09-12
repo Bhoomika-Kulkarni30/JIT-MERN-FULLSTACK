@@ -1,13 +1,13 @@
 import Navbar from './components/Navbar';
+
 import Dashboard from './components/Dashboard';
 import { Routes,Route } from "react-router-dom";
 import Tasks from './components/Tasks';
-import Taskdetails from './components/Taskdetails';
 
+import Taskdetails from './components/Taskdetails';
+import { useState } from "react";
 
 import './App.css'
-
-
 function App(){
      
    const [tasks,setTasks]=useState([
@@ -30,14 +30,15 @@ function App(){
          status:"Status: pending"
         }
     ]);
-    
+
   return(
     <div>
     <Navbar />
+  
   <Routes>
-      <Route path="/" element={<Dashboard tasks={tasks} />}/>
+      <Route path="/" element={<Dashboard tasks={tasks} setTasks={setTasks}/>}/>
       <Route path="/tasks" element={<Tasks />}/>
-      <Route path="/task/:id" element={<Taskdetails />}/>
+      <Route path="/tasks/:id" element={<Taskdetails tasks={tasks}/>}/>
   </Routes>
     </div>
   );
