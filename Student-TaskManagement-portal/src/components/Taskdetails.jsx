@@ -11,7 +11,7 @@ function Taskdetails(props){
     <h1>Task details</h1>
     <h2>{task.title}</h2>
     <p>{task.description}</p>
-    <p>{task.status}</p>
+    <p> Status: {task.status}</p>
 </div>
 );
 }
