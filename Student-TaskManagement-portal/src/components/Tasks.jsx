@@ -1,8 +1,18 @@
-function Tasks(){
+function Tasks(props){
 return (
     <div>
         <h1>Tasks Page</h1>
-        <p>All the students tasks will appear here.</p>
+        
+        {
+            props.tasks.map((task) =>(
+                <div key={task.id}>
+                    <h2>{task.title}</h2>
+                    <p>{task.description}</p>
+                    <p>{task.status}</p>
+                    </div>
+            ))
+
+        }
     </div>
 );
 }
