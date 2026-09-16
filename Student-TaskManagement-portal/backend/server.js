@@ -1,10 +1,20 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
+
+const mongoose = require("mongoose");
+
 app.use(cors());
 app.use(express.json());
 
+mongoose.connect(process.env.MONGODB_URL).then(()=>{
+console.log("MongoDB Connected succesfully");
+}).catch((error)=>{
+    console.log("MongoDB Connection Failed",error.message);
+})
  const tasks=[
         { 
             id:1,
