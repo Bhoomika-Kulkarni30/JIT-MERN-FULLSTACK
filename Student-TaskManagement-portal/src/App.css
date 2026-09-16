@@ -102,35 +102,76 @@ main > h2{
   margin:0;
   display:flex;
  }
+
+ 
 /*TAsks page deatils*/
 .task-details {
-  margin: 30px;
-  margin-right: 60%;
-  background-color: #ffffff;
-  color: #1e293b;
-  padding: 18px 20px;
-  border: 1px solid #bfdbfe;
-  border-radius: 12px;
-  box-shadow: 0.5px 0.5px 4px rgba(29, 57, 134, 0.15);
+    width: 600px;
+    margin: 60px auto;
+
+    background-color: #ffffff;
+    color: #1e293b;
+
+    padding: 35px 40px;
+
+    border: 1px solid #dbe3ef;
+    border-radius: 14px;
+
+    box-shadow: 0 8px 25px rgba(30, 58, 138, 0.12);
+
+    box-sizing: border-box;
 }
 
 .task-details h1 {
-  font-size: 40px;
-  color: #1e3a8a;
-  margin: 0 0 12px;
+    margin: 0 0 25px;
+
+    text-align: center;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    color: #1e3a8a;
 }
 
-.task-details h2,p {
-  color: #1e293b;
-  margin: 6px 0;
-  font-size: 15px;
+.task-details > div {
+    background-color: #f8fafc;
+
+    padding: 25px;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
 }
 
-.task-details div{
-  background-color: #bfcdf5;
-  padding:10px;
-  border-radius: 8px;
-  box-shadow: 1px 1px 6px rgb(191, 146, 243);
+.task-details h2 {
+    margin: 0 0 15px;
+
+    font-size: 24px;
+    font-weight: 600;
+
+    color: #0f172a;
+}
+
+.task-details p {
+    margin: 12px 0;
+
+    font-size: 16px;
+    line-height: 1.5;
+
+    color: #475569;
+}
+
+.task-details p:last-child {
+  display: inline-block;
+    margin-top: 18px;
+    padding: 7px 15px;
+
+    background-color: #dbeafe;
+    color: #1d4ed8;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+    font-weight: 600;
 }
 
 /*Dashboard*/
@@ -202,7 +243,6 @@ input:hover{
  height: 28px;
  width: 28px;
  margin-right: 20px;
-
 }
 
 .delete-icon:hover{

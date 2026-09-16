@@ -30,7 +30,7 @@ catch(error){
 
 
     return(
-        <div>
+        <div className="task-details">
             <h2 className="divaddtask">Add Task</h2>
             <form onSubmit={handleSubmit}>
             <label>Add Title  </label>

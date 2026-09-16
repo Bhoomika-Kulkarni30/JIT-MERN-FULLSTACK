@@ -5,29 +5,50 @@ import AddTask from "./AddTask";
 function Dashboard(props){
  
     
-    function toggletask(id){
+   async function toggletask(id){
+    const task = props.tasks.find((task)=> task.id === id);
+    const newStatus = task.status === 
+    "Completed" ? "Pending" : "Completed";
+
+    const response = await fetch(`http://localhost:5000/api/tasks/${id}`,
+    {
+        method:"PUT",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({status:newStatus})
+
+   })
+
+   const updatedTask = await response.json();
      props.setTasks(
     props.tasks.map((task) => {
             if(task.id === id){
-                return {...task,
-                    status: task.status === "Completed" ? "Pending" : "Completed"
-                };
+                return updatedTask;
                 
             }
             return task;
         }
     ));
     }
-
     function addTask(newTask){
      props.setTasks([...props.tasks,newTask]);
     }
 
- function deleteTask(id) {
-        props.setTasks(
-            props.tasks.filter((task)=>task.id !==id)
-        );
-    }
+async function deleteTask(id) {
+
+    const response = await fetch(
+        `http://localhost:5000/api/tasks/${id}`,
+        {
+            method: "DELETE"
+        }
+    );
+    const deletedTask = await response.json();
+   
+    props.setTasks(
+        props.tasks.filter((task) => task.id !== deletedTask.id)
+    );
+}
 
 
     return (

@@ -1,5 +1,4 @@
 const express = require("express");
-
 const cors = require("cors");
 
 const app = express();
@@ -11,13 +10,13 @@ app.use(express.json());
             id:1,
             title:"Learn React",
           description:"Understanding components",
-          status:" in progress"
+          status:"pending"
         },
           {
             id:2,
-             title:"HTMLCSS",
+             title:"HTML & CSS",
          description:"building Responsive Webpage", 
-         status:" completed"
+         status:"completed"
         },
         {
             id:5,
@@ -35,11 +34,31 @@ app.use(express.json());
     app.get("/api/tasks/:id",(req, res)=>{
         const id =Number(req.params.id);
         const task = tasks.find((task)=> task.id === id);
-        res.json(task);
     if(!task){
         return res.status(404).json({message:"Task Not Found!"})
     }
     res.json(task);
+    })
+     
+    app.put("/api/tasks/:id",(req,res)=>{
+        const id = Number(req.params.id);
+        const task = tasks.find((task) => task.id === id);
+    
+      if(!task){
+        return res.status(404).json({message:"Task not found"})
+      }   
+       task.status = req.body.status;
+       res.json(task);
+    })
+
+    app.delete("/api/tasks/:id", (req,res)=>{
+        const id = Number(req.params.id);
+        const taskIndex = tasks.findIndex((task)=>task.id === id);
+        if(taskIndex === -1){
+            return res.status(404).json({message:"Task not found"})
+        }
+        const deletedTask = tasks.splice(taskIndex, 1);
+        res.json(deletedTask[0]);
     })
 
     app.post("/api/tasks",(req,res)=>{
