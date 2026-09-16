@@ -5,7 +5,7 @@ return (
         
         {
             props.tasks.map((task) =>(
-                <div key={task.id}>
+                <div key={task.id} className="task-details">
                     <h2>{task.title}</h2>
                     <p>{task.description}</p>
                     <p> Status: {task.status}</p>

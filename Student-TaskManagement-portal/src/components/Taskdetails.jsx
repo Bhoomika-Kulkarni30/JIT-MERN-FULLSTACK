@@ -7,11 +7,11 @@ function Taskdetails(props){
             return <h2> Task Not Found ! </h2>
         }
         return (
-        <div>
-    <h1>Task details</h1>
-    <h2>{task.title}</h2>
-    <p>{task.description}</p>
-    <p> Status: {task.status}</p>
+        <div className="task-details">
+    <h1>Task details :</h1> <div>
+    <h2>{task.title}</h2><br></br>
+    <p>{task.description}</p><br/>
+    <p> Status: {task.status}</p> </div>
 </div>
 );
 }

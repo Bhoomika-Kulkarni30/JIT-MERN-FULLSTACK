@@ -9,7 +9,7 @@ function Taskcard(props){
         
         <p><i>{props.status}</i></p>
         <button onClick={props.onToggle}>change status</button>
-     <Link to={`/tasks/${props.id}`}>
+     <Link to={`/tasks/${props.id}`} id="view-d">
      View Details 
      </Link>
 <img 

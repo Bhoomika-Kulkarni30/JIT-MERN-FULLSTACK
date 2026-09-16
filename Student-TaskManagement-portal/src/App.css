@@ -46,11 +46,16 @@ body{
 .stat-card{
   background-color:#ffffff;
   border:1px solid #dbeafe;
-  border-radius:10px;
+  border-radius: 30% 10% 30% 10%;
   padding:16px;
   text-align:center;
   width:150px;
   color:#1e3a8a;
+}
+.stat-card:hover{
+  border-color:#bfcdf5;
+  border-radius: 10% 30% 10% 30%;
+  box-shadow: 0.5px 0.5px 2px black;
 }
 
 .stat-card h3{
@@ -95,7 +100,39 @@ main > h2{
 }
  .taskcard p{
   margin:0;
+  display:flex;
  }
+/*TAsks page deatils*/
+.task-details {
+  margin: 30px;
+  margin-right: 60%;
+  background-color: #ffffff;
+  color: #1e293b;
+  padding: 18px 20px;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  box-shadow: 0.5px 0.5px 4px rgba(29, 57, 134, 0.15);
+}
+
+.task-details h1 {
+  font-size: 40px;
+  color: #1e3a8a;
+  margin: 0 0 12px;
+}
+
+.task-details h2,p {
+  color: #1e293b;
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.task-details div{
+  background-color: #bfcdf5;
+  padding:10px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 6px rgb(191, 146, 243);
+}
+
 /*Dashboard*/
 main{
   padding:12px 30px 30px;
@@ -113,11 +150,13 @@ button{
   border-right-color:  rgb(8, 12, 252);
   border-bottom-color: white;
   border-radius: 30px;
-  box-shadow: 2px 1px 10px rgb(138, 138, 236);
+  box-shadow: 1px 1px 6px rgb(138, 138, 236);
+  cursor: pointer;
 }
 
 button:hover{
   background-color:#ffeff4;
+  transform: translateY(-3px);
 }
 
 nav img {
@@ -144,9 +183,21 @@ input:hover{
 }
 
 .divaddtask{
-  color:#1e3a8a
+  color:hwb(224 12% 46%);
 }
 
+#view-d{
+  background-color:hwb(224 69% 6%);
+  border-radius:7px;
+  padding:8px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  transition:opacity 0.5 ease;
+}
+
+#view-d:hover{
+  opacity:0.7;
+  box-shadow: 3px 3px 1px rgb(30, 79, 240);
+}
 .delete-icon{
  height: 28px;
  width: 28px;
@@ -155,7 +206,6 @@ input:hover{
 }
 
 .delete-icon:hover{
-height:30px;
-width:30px;
-
+transform: translateY(-6px);
+cursor: pointer;
 }

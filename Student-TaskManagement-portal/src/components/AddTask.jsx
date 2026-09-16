@@ -3,7 +3,8 @@ import { useState } from "react";
 export default function AddTask(props){
     const [title,setTitle]= useState("");
     const [description,setDescription]= useState("");
-    function handleSubmit(e){
+
+    async function handleSubmit(e){
         e.preventDefault();
         const newTask={
             id:Date.now(),
@@ -11,9 +12,23 @@ export default function AddTask(props){
             description: description,
             status:"Pending"
         };
-      console.log("Object",newTask);
-      props.onAddtask(newTask);
-    }
+      try{
+      const response = await fetch("http://localhost:5000/api/tasks",{
+        method:"POST",
+        headers:{"Content-type":"application/json"},
+           body:JSON.stringify(newTask)
+    });
+
+    const data = await response.json();
+    props.onAddTask(data);
+
+}   
+catch(error){
+    console.log(error);
+}
+}
+
+
     return(
         <div>
             <h2 className="divaddtask">Add Task</h2>
