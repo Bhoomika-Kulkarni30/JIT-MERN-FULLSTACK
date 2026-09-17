@@ -54,9 +54,14 @@ async function deleteTask(id) {
     return (
     <main>
         <div className="stat-container">
-         <Statcard title="Total tasks" value="10"/>
-         <Statcard title="Completed"value="6"/>
-         <Statcard title="Pending" value="4"/>
+         <Statcard title="Total tasks" value={props.tasks.length}/>
+         <Statcard title="Completed"value=
+         {
+            props.tasks.filter((task)=>task.status === "Completed").length
+         }/>
+         <Statcard title="Pending" value={
+            props.tasks.filter((task)=>task.status === "Pending").length
+         }/>
         
         </div>
 

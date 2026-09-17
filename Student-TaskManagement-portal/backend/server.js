@@ -48,7 +48,7 @@ console.log("MongoDB Connected succesfully");
             const task = await Task.findByIdAndUpdate(
                 req.params.id,
                 {status: req.body.status},
-                {new: true}
+                { returnDocument: "after"} // changed from {new:true} [reason : deprecated error occurs for the version we use i.e. cmptly persol]
             );
             if(!task){
                 return res.status(404).json({message:"Task not Found"})
