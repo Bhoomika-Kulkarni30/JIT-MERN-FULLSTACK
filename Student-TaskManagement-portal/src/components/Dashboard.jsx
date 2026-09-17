@@ -6,7 +6,7 @@ function Dashboard(props){
  
     
    async function toggletask(id){
-    const task = props.tasks.find((task)=> task.id === id);
+    const task = props.tasks.find((task)=> task._id === id);
     const newStatus = task.status === 
     "Completed" ? "Pending" : "Completed";
 
@@ -23,7 +23,7 @@ function Dashboard(props){
    const updatedTask = await response.json();
      props.setTasks(
     props.tasks.map((task) => {
-            if(task.id === id){
+            if(task._id === id){
                 return updatedTask;
                 
             }
@@ -46,7 +46,7 @@ async function deleteTask(id) {
     const deletedTask = await response.json();
    
     props.setTasks(
-        props.tasks.filter((task) => task.id !== deletedTask.id)
+        props.tasks.filter((task) => task._id !== deletedTask._id)
     );
 }
 
@@ -67,13 +67,13 @@ async function deleteTask(id) {
             {props.tasks.map((task)=>(
      
                 <Taskcard 
-                key={task.id} 
-                id={task.id}
+                key={task._id} 
+                id={task._id}
                 title={task.title} 
                 description={task.description} 
                 status={task.status} 
-                onToggle={() => toggletask(task.id)}
-                onDelete={() => deleteTask(task.id)}
+                onToggle={() => toggletask(task._id)}
+                onDelete={() => deleteTask(task._id)}
                 />
             ))}
         </div>

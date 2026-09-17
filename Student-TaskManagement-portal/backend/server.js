@@ -4,78 +4,84 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-
+const Task = require("./models/Task")
 const mongoose = require("mongoose");
 
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URL).then(()=>{
+mongoose.connect(process.env.MONGODB_URI).then(()=>{
 console.log("MongoDB Connected succesfully");
 }).catch((error)=>{
     console.log("MongoDB Connection Failed",error.message);
 })
- const tasks=[
-        { 
-            id:1,
-            title:"Learn React",
-          description:"Understanding components",
-          status:"pending"
-        },
-          {
-            id:2,
-             title:"HTML & CSS",
-         description:"building Responsive Webpage", 
-         status:"completed"
-        },
-        {
-            id:5,
-             title:"Node & Express", 
-         description:"Building REST API's",
-         status:"pending"
-        }
-    ];
 
 
-    app.get("/api/tasks",(req,res) =>{
+    app.get("/api/tasks",async (req,res) =>{
+    try{
+        const tasks = await Task.find();
         res.json(tasks);
+    }catch(error){
+        res.status(500).json({message:"Failed to fetch Task"});
+    }
     });
 
-    app.get("/api/tasks/:id",(req, res)=>{
-        const id =Number(req.params.id);
-        const task = tasks.find((task)=> task.id === id);
-    if(!task){
-        return res.status(404).json({message:"Task Not Found!"})
-    }
-    res.json(task);
-    })
-     
-    app.put("/api/tasks/:id",(req,res)=>{
-        const id = Number(req.params.id);
-        const task = tasks.find((task) => task.id === id);
-    
+
+
+    app.get("/api/tasks/:id",async (req, res)=>{
+ try{
+       const task = await Task.findById(req.params.id);
       if(!task){
-        return res.status(404).json({message:"Task not found"})
-      }   
-       task.status = req.body.status;
-       res.json(task);
+    return res.status(404).json({message:"Task not Found"})
+   }
+   res.json(task);
+ }catch(error){
+    res.status(404).json({message:"Failed to fetch ID"})
+ }
+    });
+     
+
+
+
+    app.put("/api/tasks/:id", async (req,res)=>{
+        try{
+            const task = await Task.findByIdAndUpdate(
+                req.params.id,
+                {status: req.body.status},
+                {new: true}
+            );
+            if(!task){
+                return res.status(404).json({message:"Task not Found"})
+            }
+            res.json(task);
+        }catch(error){
+    res.status(500).json({message:"Failed to fetch ID"})
+ }
     })
 
-    app.delete("/api/tasks/:id", (req,res)=>{
-        const id = Number(req.params.id);
-        const taskIndex = tasks.findIndex((task)=>task.id === id);
-        if(taskIndex === -1){
+
+    app.delete("/api/tasks/:id", async (req,res)=>{
+       try{
+        const deletedTask = await Task.findByIdAndDelete(req.params.id);
+        if(!deletedTask){
             return res.status(404).json({message:"Task not found"})
         }
-        const deletedTask = tasks.splice(taskIndex, 1);
-        res.json(deletedTask[0]);
+        res.json(deletedTask);
+       }catch(error){
+    res.status(500).json({message:"Failed to fetch ID"})
+ }
     })
 
-    app.post("/api/tasks",(req,res)=>{
-        const newTask = req.body;
-        tasks.push(newTask);
-        res.status(201).json(newTask);
+
+    app.post("/api/tasks",async (req,res)=>{
+        try{
+            const newTask = await Task.create(req.body);
+            res.status(201).json(newTask);
+        }catch(error){
+    res.status(500).json({message:"Failed to fetch ID"})
+ }
     })
+
 
 app.get("/",(req,res) =>{
 
@@ -85,4 +91,4 @@ app.get("/",(req,res) =>{
 
 app.listen(5000,() =>{
     console.log("Server is running on port 5000")
-});
+}); 
