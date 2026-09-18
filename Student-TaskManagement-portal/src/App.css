@@ -174,13 +174,6 @@ main > h2{
     font-weight: 600;
 }
 
-.task-details:hover{
-  border: 3px solid lightblue;
-  width:700px;
-  height: 200px;
-  box-shadow:  2px 6px 6px black;
-}
-
 /*Dashboard*/
 main{
   padding:12px 30px 30px;
@@ -200,6 +193,8 @@ button{
   border-radius: 30px;
   box-shadow: 1px 1px 6px rgb(138, 138, 236);
   cursor: pointer;
+  display:block;
+  font-weight: bold;
 }
 
 button:hover{
@@ -214,12 +209,16 @@ nav img {
 
 input{
   border-radius: 7px;
+  width: 350px auto;
   text-decoration-color: black;
   border: 1px solid #1e3a8a;
+  padding:8px;
+
 }
 form{
-  border: 1px;
-  border:#dbeafe;
+  border:1px #dbeafe;
+  display: flex;
+  flex-direction: column;
 }
 form label{
   font-size: 18px;
@@ -227,11 +226,12 @@ form label{
 }
 
 input:hover{
-  box-shadow: 1px 2px 9px rgb(45, 122, 236);
+  box-shadow: 1px 2px 2px rgb(1, 10, 24);
 }
 
 .divaddtask{
-  color:hwb(224 12% 46%);
+  text-align: center;
+  color:white;
 }
 
 #view-d{
@@ -255,4 +255,101 @@ input:hover{
 .delete-icon:hover{
 transform: translateY(-6px);
 cursor: pointer;
+}
+
+/*Login Page*/
+.login-page {
+  width: 400px;
+  height: 300px;
+  margin: 60px auto;
+  background-color: #ffffff;
+  color: #1e293b;
+  padding: 35px 40px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 10px rgba(0, 1, 3, 0.10);
+}
+.login-page input{
+  margin-top: 10px;
+}
+
+.login-page h2 {
+  margin: 0px;
+  font-size: 32px;
+  text-align: center;
+  font-weight: bold;
+  color: #326bf1;
+}
+
+.login-page p {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.login-page a {
+  color: #1e3a8a;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+
+
+
+/*Registration Page*/
+
+.register-page {
+  width: 600px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.register-page h2 {
+  color: #1e3a8a;
+}
+
+.register-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-page input {
+  width: 320px;
+  padding: 11px;
+  margin: 6px 0;
+  border: 1px solid #6c88ac;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.register-page button {
+  width: 320px;
+  padding: 11px;
+  margin-top: 10px;
+  border-radius: 8px;
+  background-color: #1e3a8a;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-page button:hover {
+  background-color: #172554;
+}
+
+.register-page p {
+  font-size: 14px;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+.register-page a{
+  color: #1e3a8a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-page a:hover {
+  text-decoration: underline;
 }

@@ -1,6 +1,11 @@
 import studentlogo from '../assets/student-portal.png'
 import { Link } from "react-router-dom"
 export default function Navbar(){
+    
+     const handleLogout = ()=>{
+        localStorage.removeItem("token");
+        console.log("Logged out sucessfully");
+    }
     return (
     <nav>
         <img src={studentlogo} alt="student" style={{width:"55px",height:"55px"}} />
@@ -12,6 +17,9 @@ export default function Navbar(){
 
     <button>
         <Link to={"/tasks"}><span>Tasks</span></Link>
+    </button>
+    <button onClick={handleLogout}>
+        Logout
     </button>
      </div>
     </nav>

@@ -33,9 +33,9 @@ catch(error){
         <div className="task-details">
             <h2 className="divaddtask">Add Task</h2>
             <form onSubmit={handleSubmit}>
-            <label>Add Title  </label>
+            <label>Add Title: </label>
             <input type="Text" value={title} onChange= {(e)=>setTitle(e.target.value)}/><br></br><br></br>
-            <label>Add Description     </label> 
+            <label>Add Description:    </label> 
             <input type="Text" value={description} onChange= {(e)=>setDescription(e.target.value)}/><br></br>
             <button type="submit">Add Task</button>
             </form>
