@@ -174,6 +174,13 @@ main > h2{
     font-weight: 600;
 }
 
+.task-details:hover{
+  border: 3px solid lightblue;
+  width:700px;
+  height: 200px;
+  box-shadow:  2px 6px 6px black;
+}
+
 /*Dashboard*/
 main{
   padding:12px 30px 30px;

@@ -4,7 +4,8 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const Task = require("./models/Task")
+const Task = require("./models/Task");
+const User = require("./models/User");
 const mongoose = require("mongoose");
 
 app.use(cors());
@@ -36,7 +37,7 @@ console.log("MongoDB Connected succesfully");
    }
    res.json(task);
  }catch(error){
-    res.status(404).json({message:"Failed to fetch ID"})
+    res.status(500).json({message:"Failed to fetch ID"})
  }
     });
      
@@ -88,6 +89,24 @@ app.get("/",(req,res) =>{
     res.send("Backend is Working !!")
 
 });
+
+
+app.post("/api/register",async (req, res)=>{
+    try{
+        const{name,email,password} = req.body;
+        const newUser = await User.create({
+            name,
+            email,
+            password
+        });
+        res.status(201).json({message:"User Registered Successfuly",
+            user:newUser
+        });
+    } catch(error){
+        res.status(500).json({message:"Registration Failed"});
+    }
+})
+
 
 app.listen(5000,() =>{
     console.log("Server is running on port 5000")
